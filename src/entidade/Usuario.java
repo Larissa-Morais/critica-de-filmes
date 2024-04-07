@@ -1,5 +1,6 @@
 package entidade;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -8,14 +9,14 @@ public class Usuario {
 	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
 	private String nome;
-	private String dataNascimneto;
+	private Date dataNascimneto;
 	private String email;
 	private String senha;
 	
 	public Usuario() {}
-	public Usuario(String nome, Date dataNascimento, String email, String senha) {
+	public Usuario(String nome, String dataNascimento, String email, String senha) throws ParseException {
 		this.nome = nome;
-		this.dataNascimneto = sdf.format(dataNascimento);
+		this.dataNascimneto = sdf.parse(dataNascimento);
 		this.email = email;
 		this.senha = senha;
 	}
@@ -29,7 +30,7 @@ public class Usuario {
 	public String getNome() {
 		return nome;
 	}
-	public String getDataNascimneto() {
+	public Date getDataNascimneto() {
 		return dataNascimneto;
 	}
 	public String getEmail() {

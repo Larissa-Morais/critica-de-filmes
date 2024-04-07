@@ -1,5 +1,6 @@
 package entidade;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,23 +11,32 @@ public class Filme {
 	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
 	private String titulo;
-	private String diaLancamento;
+	private Date diaLancamento;
+	private String descricao;
+	
 	private List<String> diretor = new ArrayList<String>();
 	
 	public Filme() {}
-	public Filme(String titulo, Date diaLancamento) {
+	public Filme(String titulo, String diaLancamento, String descricao) throws ParseException {
 		this.titulo = titulo;
-		this.diaLancamento = sdf.format(diaLancamento);
+		this.diaLancamento = sdf.parse(diaLancamento);
+		this.descricao = descricao;
 	}
 	
 	public String getTitulo() {
 		return titulo;
 	}
-	public String getDiaLancamento() {
+	public Date getDiaLancamento() {
 		return diaLancamento;
 	}
 	public List<String> getDiretor() {
 		return diretor;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	
 	public void adicionarDiretor(String diretor) {
